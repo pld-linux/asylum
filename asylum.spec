@@ -29,7 +29,7 @@ Archimedes.
 %build
 %{__make} \
 	CC="%{__cc}" \
-	CFLAGS="%{rpmcflags}"
+	CFLAGS="%{rpmcflags} -x c++"
 
 %install
 rm -rf $RPM_BUILD_ROOT
