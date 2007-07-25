@@ -9,7 +9,9 @@ Source0:	http://dl.sourceforge.net/sdl-asylum/%{name}-%{version}.tar.gz
 # Source0-md5:	38ce8d0b2b58748a5499239aa8dfd090
 Patch0:		%{name}-makefile.patch
 URL:		http://sourceforge.net/projects/sdl-asylum/
+BuildRequires:	SDL-devel
 BuildRequires:	SDL_mixer-devel
+BuildRequires:	libstdc++-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
