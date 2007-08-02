@@ -1,5 +1,5 @@
 Summary:	Port of Digital Psychosis' 1994 platform shooter
-Summary(pl.UTF-8):	Port gry platformowej Digital Psychosis' 1994
+Summary(pl.UTF-8):	Port gry platformowej napisanej przez Digital Psychosis w 1994 roku
 Name:		asylum
 Version:	0.2
 Release:	0.1
@@ -19,8 +19,8 @@ A port of Digital Psychosis' 1994 platform shooter for the Acorn
 Archimedes.
 
 %description -l pl.UTF-8
-Port gry Digital Psychosis' 1994, strzelaniny platformowej dla Acorn
-Archimedes.
+Port napisaj przez Digital Psychosis w 1994 roku strzelaniny
+platformowej dla komputera Acorn Archimedes.
 
 %prep
 %setup -q
