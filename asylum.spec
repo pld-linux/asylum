@@ -1,12 +1,15 @@
+# TODO:
+# - fix install score dir, because game crashes after start
+
 Summary:	Port of Digital Psychosis' 1994 platform shooter
 Summary(pl.UTF-8):	Port gry platformowej napisanej przez Digital Psychosis w 1994 roku
 Name:		asylum
-Version:	0.2
+Version:	0.2.1
 Release:	0.1
 License:	GPL v3+
 Group:		X11/Applications/Games
 Source0:	http://dl.sourceforge.net/sdl-asylum/%{name}-%{version}.tar.gz
-# Source0-md5:	38ce8d0b2b58748a5499239aa8dfd090
+# Source0-md5:	da59964041bb0588b600b3455762c1fb
 Patch0:		%{name}-makefile.patch
 URL:		http://sourceforge.net/projects/sdl-asylum/
 BuildRequires:	SDL-devel
@@ -36,8 +39,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
-
-install -d $RPM_BUILD_ROOT/var/games/asylum
 
 %clean
 rm -rf $RPM_BUILD_ROOT
