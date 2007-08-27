@@ -1,5 +1,5 @@
---- asylum-0.2/Makefile~	2007-07-25 12:59:11.000000000 +0200
-+++ asylum-0.2/Makefile	2007-07-25 12:59:09.000000000 +0200
+--- asylum-0.2.1/Makefile~	2007-08-25 06:42:56.000000000 +0200
++++ asylum-0.2.1/Makefile	2007-08-26 11:05:54.000000000 +0200
 @@ -6,9 +6,9 @@
  
  RESOURCES=data/Resources data/Ego data/Psyche data/Id data/Voices
@@ -9,37 +9,37 @@
 -INSTALLHISCORES=/var/games/asylum
 +INSTALLBIN=$(DESTDIR)/usr/bin/
 +INSTALLRESOURCEPATH=$(DESTDIR)/usr/share/asylum
-+INSTALLHISCORES=$(DESTDIR)/var/asylum
++INSTALLHISCORES=$(DESTDIR)/var/games/asylum
  
  INSTALLGROUP=games
- 
-@@ -16,21 +16,22 @@
+ CHGRP=chgrp
+@@ -27,21 +27,22 @@
  default: build
  
  $(INSTALLBIN): asylum Makefile
 +	mkdir -p $(INSTALLBIN)
  	cp asylum $(INSTALLBIN)
--	chgrp $(INSTALLGROUP) $(INSTALLBIN)
--	chmod g+s $(INSTALLBIN)
--	chmod a+x $(INSTALLBIN)
-+#	chgrp $(INSTALLGROUP) $(INSTALLBIN)
-+#	chmod g+s $(INSTALLBIN)
-+#	chmod a+x $(INSTALLBIN)
+-	$(CHGRP) $(INSTALLGROUP) $(INSTALLBIN)
+-	$(CHMOD) g+s $(INSTALLBIN)
+-	$(CHMOD) a+x $(INSTALLBIN)
++#	$(CHGRP) $(INSTALLGROUP) $(INSTALLBIN)
++#	$(CHMOD) g+s $(INSTALLBIN)
++#	$(CHMOD) a+x $(INSTALLBIN)
  
- $(INSTALLRESOURCEPATH): $(RESOURCES) Makefile
+ install-resources: $(RESOURCES) Makefile
  	mkdir -p $(INSTALLRESOURCEPATH)
  	cp -r $(RESOURCES) $(INSTALLRESOURCEPATH)/
--	chgrp -R $(INSTALLGROUP) $(INSTALLRESOURCEPATH)/
--	chmod -R a+rx $(INSTALLRESOURCEPATH)/
-+#	chgrp -R $(INSTALLGROUP) $(INSTALLRESOURCEPATH)/
-+#	chmod -R a+rx $(INSTALLRESOURCEPATH)/
+-	$(CHGRP) -R $(INSTALLGROUP) $(INSTALLRESOURCEPATH)/
+-	$(CHMOD) -R a+rx $(INSTALLRESOURCEPATH)/
++#	$(CHGRP) -R $(INSTALLGROUP) $(INSTALLRESOURCEPATH)/
++#	$(CHMOD) -R a+rx $(INSTALLRESOURCEPATH)/
  
- $(INSTALLHISCORES): Makefile
+ install-hiscores: Makefile
  	mkdir -p $(INSTALLHISCORES)
--	chgrp $(INSTALLGROUP) $(INSTALLHISCORES)
--	chmod g+rwx,o-rwx $(INSTALLHISCORES)
-+#	chgrp $(INSTALLGROUP) $(INSTALLHISCORES)
-+#	chmod g+rwx,o-rwx $(INSTALLHISCORES)
+-	$(CHGRP) $(INSTALLGROUP) $(INSTALLHISCORES)
+-	$(CHMOD) g+rwx,o-rwx $(INSTALLHISCORES)
++#	$(CHGRP) $(INSTALLGROUP) $(INSTALLHISCORES)
++#	$(CHMOD) g+rwx,o-rwx $(INSTALLHISCORES)
  
  install-binary: $(INSTALLBIN)
  
