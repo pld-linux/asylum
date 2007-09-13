@@ -11,7 +11,7 @@ Group:		X11/Applications/Games
 Source0:	http://dl.sourceforge.net/sdl-asylum/%{name}-%{version}.tar.gz
 # Source0-md5:	e349a99bf099df818b0efc4f83359858
 Patch0:		%{name}-makefile.patch
-URL:		http://sourceforge.net/projects/sdl-asylum/
+URL:		http://sdl-asylum.sourceforge.net/
 BuildRequires:	SDL-devel
 BuildRequires:	SDL_mixer-devel
 BuildRequires:	libstdc++-devel
