@@ -45,7 +45,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README
+%doc Instruct README
 %attr(2755,root,games) %{_bindir}/%{name}
 %{_datadir}/%{name}
 %attr(775,root,games) %dir /var/games/asylum
