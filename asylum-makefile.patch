@@ -1,6 +1,12 @@
---- asylum-0.2.1/Makefile~	2007-08-25 06:42:56.000000000 +0200
-+++ asylum-0.2.1/Makefile	2007-08-26 11:05:54.000000000 +0200
-@@ -6,9 +6,9 @@
+--- asylum-0.2.3/Makefile~	2007-11-11 15:44:39.000000000 +0100
++++ asylum-0.2.3/Makefile	2007-11-11 15:43:55.000000000 +0100
+@@ -1,14 +1,12 @@
+ CC=gcc
+-CFLAGS= -x c++ -O3 -funsigned-char \
+-	-DRESOURCEPATH=\"$(INSTALLRESOURCEPATH)\" \
+-	-DSCOREPATH=\"$(INSTALLHISCORES)\"
++CFLAGS= -x c++ -funsigned-char
+ LIBS=-lm -lSDL -lSDL_mixer -lstdc++
  
  RESOURCES=data/Resources data/Ego data/Psyche data/Id data/Voices
  
@@ -13,7 +19,7 @@
  
  INSTALLGROUP=games
  CHGRP=chgrp
-@@ -27,21 +27,22 @@
+@@ -27,21 +25,22 @@
  default: build
  
  $(INSTALLBIN): asylum Makefile
@@ -43,3 +49,12 @@
  
  install-binary: $(INSTALLBIN)
  
+@@ -53,7 +52,7 @@
+ build: asylum
+ 
+ asylum: asylum.c asylum.h Makefile
+-	$(CC) $(CFLAGS) -o asylum asylum.c $(LIBS)
++	$(CC) $(OPTFLAGS) $(CFLAGS) -o asylum asylum.c $(LIBS)
+ 
+ clean:
+ 	rm asylum
