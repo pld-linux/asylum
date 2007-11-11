@@ -2,7 +2,7 @@ Summary:	Port of Digital Psychosis' 1994 platform shooter
 Summary(pl.UTF-8):	Port gry platformowej napisanej przez Digital Psychosis w 1994 roku
 Name:		asylum
 Version:	0.2.3
-Release:	0.1
+Release:	1
 License:	GPL v3+
 Group:		X11/Applications/Games
 Source0:	http://dl.sourceforge.net/sdl-asylum/%{name}-%{version}.tar.gz
