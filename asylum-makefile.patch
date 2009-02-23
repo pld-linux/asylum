@@ -1,60 +1,41 @@
---- asylum-0.2.3/Makefile~	2007-11-11 15:44:39.000000000 +0100
-+++ asylum-0.2.3/Makefile	2007-11-11 15:43:55.000000000 +0100
-@@ -1,14 +1,12 @@
- CC=gcc
--CFLAGS= -x c++ -O3 -funsigned-char \
--	-DRESOURCEPATH=\"$(INSTALLRESOURCEPATH)\" \
--	-DSCOREPATH=\"$(INSTALLHISCORES)\"
-+CFLAGS= -x c++ -funsigned-char
- LIBS=-lm -lSDL -lSDL_mixer -lstdc++
+--- asylum-0.3.0/Makefile~	2009-02-23 14:15:13.000000000 +0100
++++ asylum-0.3.0/Makefile	2009-02-23 14:51:34.000000000 +0100
+@@ -45,25 +45,21 @@
+ 	LIBS=-lm -lmingw32 -lSDL_mixer -lSDLmain -lSDL -mwindows
+ endif
+ ifeq ($(HOST),generic)
+-	INSTALLBIN=/usr/games/asylum
+-	INSTALLRESOURCEPATH=/usr/share/games/asylum
+-	INSTALLHISCORES=/var/games/asylum
++	INSTALLBIN=$(DESTDIR)/usr/bin/
++	INSTALLRESOURCEPATH=$(DESTDIR)/usr/share/asylum
++	INSTALLHISCORES=$(DESTDIR)/var/games/asylum
+ endif
  
- RESOURCES=data/Resources data/Ego data/Psyche data/Id data/Voices
- 
--INSTALLBIN=/usr/games/asylum
--INSTALLRESOURCEPATH=/usr/share/games/asylum
--INSTALLHISCORES=/var/games/asylum
-+INSTALLBIN=$(DESTDIR)/usr/bin/
-+INSTALLRESOURCEPATH=$(DESTDIR)/usr/share/asylum
-+INSTALLHISCORES=$(DESTDIR)/var/games/asylum
- 
- INSTALLGROUP=games
- CHGRP=chgrp
-@@ -27,21 +25,22 @@
  default: build
  
- $(INSTALLBIN): asylum Makefile
+ ifneq ($(HOST),mingw)
+ $(INSTALLBIN): asylum$(EXE) Makefile
 +	mkdir -p $(INSTALLBIN)
- 	cp asylum $(INSTALLBIN)
+ 	cp asylum$(EXE) $(INSTALLBIN)
 -	$(CHGRP) $(INSTALLGROUP) $(INSTALLBIN)
 -	$(CHMOD) g+s $(INSTALLBIN)
 -	$(CHMOD) a+x $(INSTALLBIN)
-+#	$(CHGRP) $(INSTALLGROUP) $(INSTALLBIN)
-+#	$(CHMOD) g+s $(INSTALLBIN)
-+#	$(CHMOD) a+x $(INSTALLBIN)
  
  install-resources: $(RESOURCES) Makefile
  	mkdir -p $(INSTALLRESOURCEPATH)
  	cp -r $(RESOURCES) $(INSTALLRESOURCEPATH)/
 -	$(CHGRP) -R $(INSTALLGROUP) $(INSTALLRESOURCEPATH)/
--	$(CHMOD) -R a+rx $(INSTALLRESOURCEPATH)/
-+#	$(CHGRP) -R $(INSTALLGROUP) $(INSTALLRESOURCEPATH)/
-+#	$(CHMOD) -R a+rx $(INSTALLRESOURCEPATH)/
+-	$(CHMOD) -R a+rX $(INSTALLRESOURCEPATH)/
  
  install-hiscores: Makefile
  	mkdir -p $(INSTALLHISCORES)
--	$(CHGRP) $(INSTALLGROUP) $(INSTALLHISCORES)
--	$(CHMOD) g+rwx,o-rwx $(INSTALLHISCORES)
-+#	$(CHGRP) $(INSTALLGROUP) $(INSTALLHISCORES)
-+#	$(CHMOD) g+rwx,o-rwx $(INSTALLHISCORES)
+@@ -71,8 +67,6 @@
+ 	touch $(INSTALLHISCORES)/PsycheHighScores
+ 	touch $(INSTALLHISCORES)/IdHighScores
+ 	touch $(INSTALLHISCORES)/ExtendedHighScores
+-	$(CHGRP) -R $(INSTALLGROUP) $(INSTALLHISCORES)/*
+-	$(CHMOD) -R 660 $(INSTALLHISCORES)/*
  
  install-binary: $(INSTALLBIN)
  
-@@ -53,7 +52,7 @@
- build: asylum
- 
- asylum: asylum.c asylum.h Makefile
--	$(CC) $(CFLAGS) -o asylum asylum.c $(LIBS)
-+	$(CC) $(OPTFLAGS) $(CFLAGS) -o asylum asylum.c $(LIBS)
- 
- clean:
- 	rm asylum
