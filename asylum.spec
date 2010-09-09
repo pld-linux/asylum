@@ -5,7 +5,7 @@ Version:	0.3.2
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications/Games
-Source0:	http://dl.sourceforge.net/sdl-asylum/%{name}-%{version}.tar.gz
+Source0:	http://downloads.sourceforge.net/sdl-asylum/%{name}-%{version}.tar.gz
 # Source0-md5:	e662061a48726a16884a6f5d3ce69170
 Patch0:		%{name}-makefile.patch
 URL:		http://sdl-asylum.sourceforge.net/
